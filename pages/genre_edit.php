@@ -26,7 +26,7 @@
     <table class="table">
         <tr>
             <td width="15%">Nama Genre</td>
-            <td widht="10px">:</td>
+            <td width="10px">:</td>
             <td><input type="text" name="nama_genre" value="<?= $row['nama_genre'] ?>" class="form-control"></td>
         </tr>
         <tr>

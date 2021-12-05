@@ -45,11 +45,13 @@
         require_once "libraries/fungsi.php";
 
         //ambil data menu/modul
-        $sql    = "select m.* 
+        if(isset($_SESSION['is_logged_in'])) {
+            $sql    = "select m.* 
             from modul_role as mr 
             join modul as m on m.id_modul=mr.id_modul
             where mr.id_role=".$_SESSION['id_role']." and mr.deleted_at is null and m.deleted_at is null";
-        $menu   = mysqli_query($koneksi, $sql);
+            $menu   = mysqli_query($koneksi, $sql);
+        };
         // die($menu);
     ?>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -135,15 +137,20 @@
                             'edit'      => 'update',
                             'update'    => 'update',
                             'list'      => 'read',
-                            'cetakpdf'  => 'read',
+                            'pdf'       => 'read',
                             'excel'     => 'read',
                             'word'      => 'read',
                             'save'      => 'save',
+                            'chart'     => 'read'
                         ];
                         
                         $exp_halaman = explode("_", $halaman);
                         $action = $exp_halaman[1];
                         $modul = $exp_halaman[0];
+
+                        if(in_array($action, ['pdf', 'excel', 'word'])) {
+                            ob_clean();
+                        }
 
                         $action_modul = $map_action_modul[$action];
                         $id_role = $_SESSION['id_role'];

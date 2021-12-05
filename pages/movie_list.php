@@ -31,6 +31,8 @@
         <?php endif; ?>
         <?php if($is_boleh_read) : ?>
         <a href="?page=movie_excel" class="btn btn-sm btn-outline-secondary">Export XLSX</a>
+        <a href="?page=movie_chart" class="btn btn-sm btn-outline-secondary">Chart</a>
+        <a href="?page=movie_pdf" class="btn btn-sm btn-outline-secondary">Export PDF</a>
         <?php endif; ?>
     </div>
 </div>
@@ -53,9 +55,11 @@
             $btn = array();
             $btn[] = "<a href='?page=movie_word&id_movie=".$row['id_movie']."' class='btn btn-sm btn-primary'>Cetak</a>";
             if($is_boleh_edit == true)
-                $btn[] = "<a href='?page=movie_edit&id_movie=".$row['id_movie']."' class='btn btn-sm btn-primary'>Edit</a>";
+                // $btn[] = "<a href='?page=movie_edit&id_movie=".$row['id_movie']."' class='btn btn-sm btn-primary'>Edit</a>";
+                $btn[] = "<a href='#' class='btn btn-sm btn-info'>Edit</a>";
             if($is_boleh_hapus == true)
-                $btn[] = "<a href='?page=movie_delete&id_movie=".$row['id_movie']."' class='btn btn-sm btn-danger'>Hapus</a>";
+                // $btn[] = "<a href='?page=movie_delete&id_movie=".$row['id_movie']."' class='btn btn-sm btn-danger'>Hapus</a>";
+                $btn[] = "<a href='#' class='btn btn-sm btn-danger'>Hapus</a>";
                 
             echo "<tr> 
                 <td class='text-center'>".$no."</td>
